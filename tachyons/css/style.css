@@ -1,17 +1,18 @@
 /* ===========================================================
-   TOKENS
+   TOKENS (LIGHT MODE)
 =========================================================== */
 :root {
-  --bg:         #ffffff; /* Sfondo principale bianco */
-  --bg-raised:  #f0f0f0; /* Sfondo dei pannelli (stile terminale) grigio chiarissimo */
-  --amber:      #ff9d3d; /* Il tuo arancione */
-  --amber-dim:  #cc7a2b; 
-  --amber-soft: rgba(255, 157, 61, 0.15);
-  --paper:      #120e0a; /* Il testo principale ora deve essere scuro per leggersi sul bianco */
-  --paper-dim:  #555555; /* Testo secondario grigio scuro */
-  --line:       #e0e0e0; /* Linee di divisione grigio chiaro */
+  --bg:         #ffffff;          /* Sfondo principale bianco */
+  --bg-raised:  #f4f4f6;          /* Sfondo dei pannelli (stile terminale chiaro) */
+  --amber:      #e67e22;          /* Arancione leggermente più carico per renderlo leggibile sul chiaro */
+  --amber-dim:  #b96315;
+  --amber-soft: rgba(230, 126, 34, 0.12);
+  --paper:      #1a1a1a;          /* Testo principale molto scuro */
+  --paper-dim:  #555555;          /* Testo secondario grigio scuro */
+  --line:       #e0e0e0;          /* Linee di divisione chiare */
 
   --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+
   --max: 1120px;
   --gutter: clamp(1.25rem, 4vw, 3rem);
   --radius: 8px;
@@ -22,7 +23,11 @@
    RESET
 =========================================================== */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; background: var(--bg); }
+html { 
+  scroll-behavior: smooth; 
+  background: var(--bg); 
+  scroll-padding-top: 90px; 
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -36,31 +41,17 @@ body {
   position: relative;
 }
 
-/* Prism WebGL background — fixed behind all content */
+/* Prism WebGL background */
 .prism-bg {
   position: fixed;
   inset: 0;
   z-index: -1;
   background: var(--bg);
   pointer-events: none;
-  transition: opacity 0.1s linear; /* Aggiungi questa riga */
+  transition: opacity 0.1s linear;
 }
-/* subtle CRT scanline texture across the whole page */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 40;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0px,
-    rgba(0, 0, 0, 0) 2px,
-    rgba(0, 0, 0, 0.35) 3px
-  );
-  opacity: 0.05;
-  mix-blend-mode: overlay;
-}
+
+/* Rimossa la trama CRT scura per lasciare il sito pulito e luminoso */
 
 h1, h2, h3 {
   font-family: var(--font-mono);
@@ -83,7 +74,7 @@ img { max-width: 100%; display: block; }
 
 ::selection {
   background: var(--amber);
-  color: var(--bg);
+  color: #ffffff;
 }
 
 ::-webkit-scrollbar { width: 10px; }
@@ -154,12 +145,12 @@ img { max-width: 100%; display: block; }
   font-size: 0.95rem;
   transition: transform 0.2s var(--ease), background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
   border: 1.5px solid var(--amber);
-  color: var(--bg);
+  color: #ffffff; /* Testo bianco sul bottone arancione */
   background: var(--amber);
   white-space: nowrap;
 }
-.btn__glyph { opacity: 0.6; }
-.btn--primary:hover { background: var(--paper); border-color: var(--paper); transform: translateY(-2px); }
+.btn__glyph { opacity: 0.8; }
+.btn--primary:hover { background: var(--paper); border-color: var(--paper); transform: translateY(-2px); color: #ffffff; }
 
 .btn--large { padding: 1.1rem 2.2rem; font-size: 1.05rem; }
 .btn--small { padding: 0.6rem 1.3rem; font-size: 0.9rem; }
@@ -175,7 +166,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   gap: 1.5rem;
   padding: 1.1rem var(--gutter);
-  background: rgba(18, 14, 10, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
@@ -187,7 +178,7 @@ img { max-width: 100%; display: block; }
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: 1.05rem;
-  color: var(--paper);
+  color: var(--amber); /* Logo arancione */
   margin-right: auto;
 }
 .nav__mark { border-radius: 4px; }
@@ -197,9 +188,9 @@ img { max-width: 100%; display: block; }
   gap: 2rem;
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--paper-dim);
+  color: var(--paper);
 }
-.nav__links a { position: relative; padding: 0.2rem 0; }
+.nav__links a { position: relative; padding: 0.2rem 0; transition: color 0.2s; }
 .nav__links a::before {
   content: "cd ";
   opacity: 0.45;
@@ -212,7 +203,7 @@ img { max-width: 100%; display: block; }
   background: var(--amber);
   transition: width 0.25s var(--ease);
 }
-.nav__links a:hover { color: var(--paper); }
+.nav__links a:hover { color: var(--amber); }
 .nav__links a:hover::after { width: 100%; }
 
 .nav__toggle {
@@ -282,15 +273,16 @@ img { max-width: 100%; display: block; }
 }
 
 /* ===========================================================
-   TERMINAL PANE (about / contact)
+   TERMINAL PANE (Stile chiaro)
 =========================================================== */
 .terminal-pane {
-  background: rgba(28, 22, 16, 0.78);
+  background: rgba(244, 244, 246, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
 }
 .terminal-pane__bar {
   display: flex;
@@ -298,13 +290,13 @@ img { max-width: 100%; display: block; }
   gap: 0.4rem;
   padding: 0.65rem 0.9rem;
   border-bottom: 1px solid var(--line);
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.04);
 }
 .dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--line);
+  background: #ccc;
 }
 .terminal-pane__title {
   margin-left: auto;
@@ -319,6 +311,20 @@ img { max-width: 100%; display: block; }
 .terminal-pane__body--center { text-align: center; }
 .terminal-pane__body--center .prompt-line { display: block; }
 .terminal-pane__body--center p:not(.prompt-line) { margin: 0 auto 1.75rem; max-width: 40ch; }
+
+/* ===========================================================
+   TEXT REVEAL ON SCROLL (ABOUT)
+=========================================================== */
+#about-text span {
+  color: var(--paper-dim);
+  border-radius: 2px;
+  transition: background-color 0.1s linear, color 0.1s linear;
+}
+
+#about-text span.highlighted {
+  background-color: var(--amber);
+  color: #ffffff; /* Testo bianco sull'arancione quando evidenziato */
+}
 
 /* ===========================================================
    ABOUT
@@ -376,7 +382,7 @@ img { max-width: 100%; display: block; }
   gap: 0.5rem;
   font-family: var(--font-mono);
   font-weight: 700;
-  color: var(--paper);
+  color: var(--amber);
 }
 .footer__status .tag { color: var(--amber); font-weight: 700; margin-right: 0.3em; }
 .footer__links { display: flex; gap: 1.5rem; }
@@ -418,18 +424,4 @@ img { max-width: 100%; display: block; }
     border-bottom: 1px solid var(--line);
     gap: 1.25rem;
   }
-}
-
-/* ===========================================================
-   TEXT REVEAL ON SCROLL
-=========================================================== */
-#about-text span {
-  color: var(--paper-dim); /* Colore spento di default */
-  border-radius: 2px;
-  transition: background-color 0.1s linear, color 0.1s linear;
-}
-
-#about-text span.highlighted {
-  background-color: var(--amber); /* Sfondo arancione */
-  color: #ffffff; /* Testo bianco */
 }

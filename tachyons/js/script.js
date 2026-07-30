@@ -123,36 +123,45 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
+// ---- Fade out del Prism BG allo scroll ----
+const prismBg = document.getElementById('prism-bg');
+
+if (prismBg) {
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    
+    if (maxScroll > 0) {
+      const scrollPercent = scrollY / maxScroll;
+      prismBg.style.opacity = Math.max(0, 1 - (scrollPercent * 1.5));
+    }
+  }, { passive: true });
+}
+
 // ---- Evidenziatore di testo allo scroll ----
 const aboutText = document.getElementById('about-text');
 
 if (aboutText) {
-  // 1. Prendi il testo e dividilo in un array di parole
-  const words = aboutText.textContent.trim().split(' ');
-  aboutText.innerHTML = ''; // Svuota il paragrafo
+  // Dividi il testo in parole usando un'espressione regolare per gestire spazi multipli/a capo
+  const words = aboutText.textContent.trim().split(/\s+/);
+  aboutText.innerHTML = ''; 
   
-  // 2. Ricostruisci il testo mettendo ogni parola in uno <span>
   words.forEach(word => {
     const span = document.createElement('span');
-    span.textContent = word + ' '; // Reinserisci lo spazio dopo la parola
+    span.textContent = word + ' '; 
     aboutText.appendChild(span);
   });
 
   const spans = aboutText.querySelectorAll('span');
 
-  // 3. Controlla lo scroll per applicare l'effetto
   window.addEventListener('scroll', () => {
     const rect = aboutText.getBoundingClientRect();
     const viewHeight = window.innerHeight;
     
-    // Calcola il progresso (da 0 a 1)
-    // L'effetto inizia quando il testo appare dal basso e finisce quando arriva circa a metà schermo
+    // Il progresso parte da 0 (quando entra nello schermo) a 1 (quando supera il 55% dello schermo)
     let progress = (viewHeight - rect.top) / (viewHeight * 0.55); 
-    
-    // Limita il valore tra 0 e 1 per evitare errori
     progress = Math.max(0, Math.min(1, progress));
 
-    // Calcola quante parole devono avere la classe "highlighted"
     const wordsToHighlight = Math.floor(progress * spans.length);
 
     spans.forEach((span, index) => {
