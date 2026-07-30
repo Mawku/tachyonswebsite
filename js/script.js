@@ -193,7 +193,7 @@ if (discordBtn) {
 
     navigator.clipboard.writeText(textToCopy).then(() => {
       const originalText = discordBtn.textContent;
-      discordBtn.textContent = 'copiato negli appunti!';
+      discordBtn.textContent = 'copied';
       
       setTimeout(() => {
         discordBtn.textContent = originalText;
