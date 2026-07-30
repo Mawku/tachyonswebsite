@@ -122,3 +122,21 @@ const yearEl = document.getElementById('year');
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
+
+// ---- Fade out del Prism BG allo scroll ----
+const prismBg = document.getElementById('prism-bg');
+
+if (prismBg) {
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    // Calcola lo scroll massimo possibile
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    
+    if (maxScroll > 0) {
+      const scrollPercent = scrollY / maxScroll;
+      // L'opacità va da 1 (in cima) a 0 (in fondo). 
+      // Il moltiplicatore 1.5 fa sì che scompaia un po' prima di arrivare proprio alla fine.
+      prismBg.style.opacity = Math.max(0, 1 - (scrollPercent * 1.5));
+    }
+  }, { passive: true });
+}

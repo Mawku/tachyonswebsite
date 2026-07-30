@@ -2,17 +2,16 @@
    TOKENS
 =========================================================== */
 :root {
-  --bg:         #120e0a;
-  --bg-raised:  #1c1610;
-  --amber:      #ff9d3d;
-  --amber-dim:  #a35c1f;
-  --amber-soft: rgba(255, 157, 61, 0.10);
-  --paper:      #f4ede1;
-  --paper-dim:  #9a8d78;
-  --line:       #362b1f;
+  --bg:         #ffffff; /* Sfondo principale bianco */
+  --bg-raised:  #f0f0f0; /* Sfondo dei pannelli (stile terminale) grigio chiarissimo */
+  --amber:      #ff9d3d; /* Il tuo arancione */
+  --amber-dim:  #cc7a2b; 
+  --amber-soft: rgba(255, 157, 61, 0.15);
+  --paper:      #120e0a; /* Il testo principale ora deve essere scuro per leggersi sul bianco */
+  --paper-dim:  #555555; /* Testo secondario grigio scuro */
+  --line:       #e0e0e0; /* Linee di divisione grigio chiaro */
 
   --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
-
   --max: 1120px;
   --gutter: clamp(1.25rem, 4vw, 3rem);
   --radius: 8px;
@@ -44,8 +43,8 @@ body {
   z-index: -1;
   background: var(--bg);
   pointer-events: none;
+  transition: opacity 0.1s linear; /* Aggiungi questa riga */
 }
-
 /* subtle CRT scanline texture across the whole page */
 body::before {
   content: "";
