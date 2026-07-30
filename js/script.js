@@ -186,7 +186,7 @@ if (discordBtn) {
     
     // Scegli cosa copiare: 
     // Opzione A: Copia solo "spaghettiallassasina"
-    const textToCopy = 'spaghettiallassasina';
+    const textToCopy = 'spaghettiallassassina';
     
     // Opzione B (alternativa): Se vuoi copiare tutto il testo dentro il bottone, scommenta la riga sotto:
     // const textToCopy = discordBtn.textContent.trim();
