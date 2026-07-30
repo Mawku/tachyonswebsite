@@ -4,20 +4,35 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tachyons</title>
+  <meta name="color-scheme" content="dark">
+  <title>Tachyons — the next big thing (i hope)</title>
   <link rel="icon" type="image/x-icon" href="img/logo.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+  <!-- ============ PRISM BACKGROUND ============ -->
+  <div class="prism-bg" id="prism-bg" aria-hidden="true"></div>
+
+  <!-- ============ BOOT SCREEN ============ -->
+  <div class="boot" id="boot" role="dialog" aria-label="Loading Tachyons">
+    <div class="boot__log" id="boot-log" aria-live="polite"></div>
+    <p class="boot__prompt" id="boot-prompt" hidden>Press any key to continue<span class="cursor">_</span></p>
+  </div>
+
   <header class="nav">
     <a href="#top" class="nav__brand">
-      <img src="img/logo.ico" alt="" class="nav__mark" width="24" height="24">
-      <span>TACHYONS</span>
+      <img src="img/logo.ico" alt="" class="nav__mark" width="20" height="20">
+      <span>~/tachyons</span>
     </a>
+
+    <nav class="nav__links" id="nav-links">
+      <a href="#about">about</a>
+      <a href="#contact">contact</a>
+    </nav>
 
     <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
       <span></span><span></span><span></span>
@@ -27,41 +42,59 @@
   <main id="top">
 
     <section class="hero">
-      <div class="hero__blob" aria-hidden="true"></div>
-      <div class="hero__ring" aria-hidden="true"></div>
-
       <div class="hero__content">
-        <h1 class="hero__title">
-          Tachyons.eu
-        </h1>
-        <p class="hero__subtitle">
-          The next big thing (i hope)
-        </p>
+        <p class="hero__path">visitor@tachyons:~$ <span class="cmd">whoami</span></p>
+        <h1 class="hero__title"><span id="hero-typed"></span><span class="cursor">_</span></h1>
+        <p class="hero__subtitle">The next big thing (i hope)</p>
         <div class="hero__actions">
-          <a href="#contact" class="btn btn--primary">Contact me</a>
+          <a href="#contact" class="btn btn--primary">
+            <span class="btn__glyph" aria-hidden="true">$</span> Contact me
+          </a>
         </div>
       </div>
     </section>
 
     <!-- ============ ABOUT ============ -->
     <section class="about" id="about">
-      <div class="about__text reveal">
-        <span class="eyebrow">About TACHYONS</span>
-        <p>
-          In the age of AI (this website was just a modified claude prompt) there is still space
-          for innovation and creative ideas, we just need to know who will be the next inventor.
-        </p>
+      <div class="terminal-pane reveal">
+        <div class="terminal-pane__bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="terminal-pane__title">about.txt</span>
+        </div>
+        <div class="terminal-pane__body">
+          <p class="prompt-line">$ cat about.txt</p>
+          <p>
+            In the age of AI (this website was just a modified claude prompt) there is still space
+            for innovation and creative ideas, we just need to know who will be the next inventor.
+          </p>
+        </div>
       </div>
+
       <div class="about__pull reveal">
-        <p>No promises.<br>No surprises.<br>Just ideas.</p>
+        <p class="prompt-line">$ echo $MANIFESTO</p>
+        <p class="about__pull-text">
+          &gt; No promises.<br>
+          &gt; No surprises.<br>
+          &gt; Just ideas.
+        </p>
       </div>
     </section>
 
     <!-- ============ CONTACT ============ -->
     <section class="contact" id="contact">
-      <div class="contact__inner reveal">
-        <p>Don't be shy and send that email</p>
-        <a href="mailto:angelocaruso@tachyons.eu" class="btn btn--primary btn--large">angelocaruso@tachyons.eu</a>
+      <div class="terminal-pane reveal contact__inner">
+        <div class="terminal-pane__bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="terminal-pane__title">mail.sh</span>
+        </div>
+        <div class="terminal-pane__body terminal-pane__body--center">
+          <p class="prompt-line">$ ./mail.sh --compose</p>
+          <p>Don't be shy and send that email</p>
+          <a href="mailto:angelocaruso@tachyons.eu" class="btn btn--primary btn--large">angelocaruso@tachyons.eu</a>
+          <br><br>
+        <a href="" class="btn btn--primary btn--large">discord: spaghettiallassasina</a>
+        </div>
+        
       </div>
     </section>
 
@@ -70,16 +103,17 @@
   <!-- ============ FOOTER ============ -->
   <footer class="footer">
     <a href="#top" class="footer__brand">
-      <img src="img/logo.ico" alt="" class="nav__mark" width="20" height="20">
-      <span>TACHYONS</span>
+      <img src="img/logo.ico" alt="" class="nav__mark" width="18" height="18">
+      <span>~/tachyons</span>
     </a>
-    <p>&copy; <span id="year">2026</span> Brand. All rights reserved.</p>
+    <p class="footer__status"><span class="tag">[ok]</span> &copy; <span id="year">2026</span> Brand. All rights reserved.</p>
     <nav class="footer__links">
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="#about">about</a>
+      <a href="#contact">contact</a>
     </nav>
   </footer>
 
   <script src="js/script.js"></script>
+  <script type="module" src="js/prism-bg.js"></script>
 </body>
 </html>
