@@ -419,3 +419,17 @@ img { max-width: 100%; display: block; }
     gap: 1.25rem;
   }
 }
+
+/* ===========================================================
+   TEXT REVEAL ON SCROLL
+=========================================================== */
+#about-text span {
+  color: var(--paper-dim); /* Colore spento di default */
+  border-radius: 2px;
+  transition: background-color 0.1s linear, color 0.1s linear;
+}
+
+#about-text span.highlighted {
+  background-color: var(--amber); /* Sfondo arancione */
+  color: #ffffff; /* Testo bianco */
+}

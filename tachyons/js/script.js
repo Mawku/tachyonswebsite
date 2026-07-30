@@ -123,20 +123,44 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// ---- Fade out del Prism BG allo scroll ----
-const prismBg = document.getElementById('prism-bg');
+// ---- Evidenziatore di testo allo scroll ----
+const aboutText = document.getElementById('about-text');
 
-if (prismBg) {
+if (aboutText) {
+  // 1. Prendi il testo e dividilo in un array di parole
+  const words = aboutText.textContent.trim().split(' ');
+  aboutText.innerHTML = ''; // Svuota il paragrafo
+  
+  // 2. Ricostruisci il testo mettendo ogni parola in uno <span>
+  words.forEach(word => {
+    const span = document.createElement('span');
+    span.textContent = word + ' '; // Reinserisci lo spazio dopo la parola
+    aboutText.appendChild(span);
+  });
+
+  const spans = aboutText.querySelectorAll('span');
+
+  // 3. Controlla lo scroll per applicare l'effetto
   window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    // Calcola lo scroll massimo possibile
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const rect = aboutText.getBoundingClientRect();
+    const viewHeight = window.innerHeight;
     
-    if (maxScroll > 0) {
-      const scrollPercent = scrollY / maxScroll;
-      // L'opacità va da 1 (in cima) a 0 (in fondo). 
-      // Il moltiplicatore 1.5 fa sì che scompaia un po' prima di arrivare proprio alla fine.
-      prismBg.style.opacity = Math.max(0, 1 - (scrollPercent * 1.5));
-    }
+    // Calcola il progresso (da 0 a 1)
+    // L'effetto inizia quando il testo appare dal basso e finisce quando arriva circa a metà schermo
+    let progress = (viewHeight - rect.top) / (viewHeight * 0.55); 
+    
+    // Limita il valore tra 0 e 1 per evitare errori
+    progress = Math.max(0, Math.min(1, progress));
+
+    // Calcola quante parole devono avere la classe "highlighted"
+    const wordsToHighlight = Math.floor(progress * spans.length);
+
+    spans.forEach((span, index) => {
+      if (index < wordsToHighlight) {
+        span.classList.add('highlighted');
+      } else {
+        span.classList.remove('highlighted');
+      }
+    });
   }, { passive: true });
 }
