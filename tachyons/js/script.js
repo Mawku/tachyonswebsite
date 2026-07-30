@@ -123,7 +123,7 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// ---- Fade out del Prism BG allo scroll ----
+// ---- Attenua il Prism BG allo scroll (effetto fioco) ----
 const prismBg = document.getElementById('prism-bg');
 
 if (prismBg) {
@@ -133,7 +133,10 @@ if (prismBg) {
     
     if (maxScroll > 0) {
       const scrollPercent = scrollY / maxScroll;
-      prismBg.style.opacity = Math.max(0, 1 - (scrollPercent * 1.5));
+      // Il valore 0.35 stabilisce l'opacità minima sotto la quale non scenderà mai
+      const minOpacity = 0.35;
+      const currentOpacity = Math.max(minOpacity, 1 - (scrollPercent * 1.2));
+      prismBg.style.opacity = currentOpacity;
     }
   }, { passive: true });
 }
