@@ -145,16 +145,21 @@ img { max-width: 100%; display: block; }
   font-size: 0.95rem;
   transition: transform 0.2s var(--ease), background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
   border: 1.5px solid var(--amber);
-  color: #ffffff; /* Testo bianco sul bottone arancione */
+  color: #ffffff;
   background: var(--amber);
-  white-space: nowrap;
+  white-space: nowrap; /* Evita che il testo vada a capo in modo strano */
 }
 .btn__glyph { opacity: 0.8; }
 .btn--primary:hover { background: var(--paper); border-color: var(--paper); transform: translateY(-2px); color: #ffffff; }
 
-.btn--large { padding: 1.1rem 2.2rem; font-size: 1.05rem; }
-.btn--small { padding: 0.6rem 1.3rem; font-size: 0.9rem; }
+/* Adatta la dimensione dei bottoni grandi su mobile per evitare il clipping */
+.btn--large { 
+  padding: 1rem 1.2rem; 
+  font-size: clamp(0.75rem, 3.8vw, 1.05rem); /* Il testo si rimpicciolisce fluidamente se lo schermo è piccolo */
+  width: 100%; /* Si estende ordinatamente dentro il box del terminale */
+} 
 
+.btn--small { padding: 0.6rem 1.3rem; font-size: 0.9rem; }
 /* ===========================================================
    NAV
 =========================================================== */

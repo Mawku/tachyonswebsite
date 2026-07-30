@@ -176,3 +176,30 @@ if (aboutText) {
     });
   }, { passive: true });
 }
+
+// ---- Copia testo al clic per il bottone Discord ----
+const discordBtn = document.getElementById('discord-btn');
+
+if (discordBtn) {
+  discordBtn.addEventListener('click', (e) => {
+    e.preventDefault(); // Evita che la pagina ricarichi o segua il link vuoto
+    
+    // Scegli cosa copiare: 
+    // Opzione A: Copia solo "spaghettiallassasina"
+    const textToCopy = 'spaghettiallassasina';
+    
+    // Opzione B (alternativa): Se vuoi copiare tutto il testo dentro il bottone, scommenta la riga sotto:
+    // const textToCopy = discordBtn.textContent.trim();
+
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      const originalText = discordBtn.textContent;
+      discordBtn.textContent = 'copiato negli appunti!';
+      
+      setTimeout(() => {
+        discordBtn.textContent = originalText;
+      }, 2000); // Dopo 2 secondi rimette il testo originale
+    }).catch(err => {
+      console.error('Errore durante la copia:', err);
+    });
+  });
+}
