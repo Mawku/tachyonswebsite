@@ -177,29 +177,75 @@ if (aboutText) {
   }, { passive: true });
 }
 
-// ---- Copia testo al clic per il bottone Discord ----
 const discordBtn = document.getElementById('discord-btn');
 
 if (discordBtn) {
   discordBtn.addEventListener('click', (e) => {
-    e.preventDefault(); // Evita che la pagina ricarichi o segua il link vuoto
-    
-    // Scegli cosa copiare: 
-    // Opzione A: Copia solo "spaghettiallassasina"
+    e.preventDefault(); 
     const textToCopy = 'spaghettiallassassina';
-    
-    // Opzione B (alternativa): Se vuoi copiare tutto il testo dentro il bottone, scommenta la riga sotto:
-    // const textToCopy = discordBtn.textContent.trim();
-
     navigator.clipboard.writeText(textToCopy).then(() => {
       const originalText = discordBtn.textContent;
       discordBtn.textContent = 'copied';
       
       setTimeout(() => {
         discordBtn.textContent = originalText;
-      }, 2000); // Dopo 2 secondi rimette il testo originale
+      }, 2000);
     }).catch(err => {
       console.error('Errore durante la copia:', err);
     });
+  });
+}
+
+// ---- Gestione Formspree Form di Contatto ----
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+const formSubmitBtn = document.getElementById('form-submit-btn');
+
+// SOSTITUISCI QUESTO CON IL TUO FORM ID DI FORMSPREE (es. 'xbgorlpy')
+const FORMSPREE_ID = 'https://formspree.io/f/xkodalnq'; 
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(contactForm);
+    
+    // Disabilita il pulsante durante l'invio
+    formSubmitBtn.disabled = true;
+    const originalBtnText = formSubmitBtn.innerHTML;
+    formSubmitBtn.innerHTML = '<span class="cursor">_</span> Sending...';
+    formStatus.className = 'form-status';
+    formStatus.textContent = '> Transmitting data to mail.sh...';
+
+    try {
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        formStatus.className = 'form-status success';
+        formStatus.textContent = '> [OK] Message sent successfully! I will reply soon.';
+        contactForm.reset();
+      } else {
+        const data = await response.json();
+        if (data.errors) {
+          formStatus.className = 'form-status error';
+          formStatus.textContent = `> Error: ${data.errors.map(error => error.message).join(", ")}`;
+        } else {
+          formStatus.className = 'form-status error';
+          formStatus.textContent = '> [FAIL] Oops! Something went wrong sending your message.';
+        }
+      }
+    } catch (error) {
+      formStatus.className = 'form-status error';
+      formStatus.textContent = '> [FAIL] Network error. Check your connection.';
+    } finally {
+      formSubmitBtn.disabled = false;
+      formSubmitBtn.innerHTML = originalBtnText;
+    }
   });
 }
