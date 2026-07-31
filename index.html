@@ -80,23 +80,51 @@
       </div>
     </section>
 
-    <!-- ============ CONTACT ============ -->
-    <section class="contact" id="contact">
-      <div class="terminal-pane reveal contact__inner">
-        <div class="terminal-pane__bar">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          <span class="terminal-pane__title">mail.sh</span>
-        </div>
-        <div class="terminal-pane__body terminal-pane__body--center">
-          <p class="prompt-line">$ ./mail.sh --larp</p>
-          <p>Don't be shy and send that message</p>
-          <a href="mailto:contact.tachyons@gmail.com" class="btn btn--primary btn--large">email: contact.tachyons@gmail.com</a>
-          <br><br>
-          <a href="#" id="discord-btn" class="btn btn--primary btn--large">discord: spaghettiallassassina</a>
+   <!-- ============ CONTACT ============ -->
+   <section class="contact" id="contact">
+    <div class="terminal-pane reveal contact__inner">
+      <div class="terminal-pane__bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="terminal-pane__title">mail.sh</span>
+      </div>
+      <div class="terminal-pane__body">
+        <p class="prompt-line">$ ./mail.sh --send-direct</p>
+        <p style="margin-bottom: 1.5rem;">Send a direct message to my inbox</p>
+
+        <form id="contact-form" class="contact-form">
+          <!-- Campo Honeypot per bloccare lo spam dei bot (invisibile agli utenti umani) -->
+          <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+
+          <div class="form-group">
+            <label for="email" class="form-label">&gt; email:</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="your.email@domain.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="subject" class="form-label">&gt; subject:</label>
+            <input type="text" id="subject" name="subject" class="form-input" placeholder="Project inquiry / Quick hello" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">&gt; message:</label>
+            <textarea id="message" name="message" class="form-input form-textarea" rows="4" placeholder="Write your message here..." required></textarea>
+          </div>
+
+          <button type="submit" id="form-submit-btn" class="btn btn--primary btn--large" style="width: 100%; cursor: pointer;">
+            <span class="btn__glyph" aria-hidden="true">$</span> Send Message
+          </button>
+
+          <!-- Status output del terminale -->
+          <div id="form-status" class="form-status" aria-live="polite"></div>
+        </form>
+
+        <div style="margin-top: 2rem; border-top: 1px dashed var(--line); padding-top: 1.5rem; text-align: center;">
+          <p style="font-size: 0.85rem; margin-bottom: 0.8rem;">Or contact me on discord:</p>
+          <a href="#" id="discord-btn" class="btn btn--primary btn--small">spaghettiallassasina</a>
         </div>
       </div>
-    </section>
-
+    </div>
+  </section>
   </main>
 
   <!-- ============ FOOTER ============ -->
