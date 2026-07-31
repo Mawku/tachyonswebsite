@@ -201,8 +201,8 @@ const contactForm = document.getElementById('contact-form');
 const formStatus = document.getElementById('form-status');
 const formSubmitBtn = document.getElementById('form-submit-btn');
 
-// SOSTITUISCI QUESTO CON IL TUO FORM ID DI FORMSPREE (es. 'xbgorlpy')
-const FORMSPREE_ID = 'https://formspree.io/f/xkodalnq'; 
+// Metti solo il codice di 8 lettere/numeri
+const FORMSPREE_ID = 'xkodalnq'; 
 
 if (contactForm) {
   contactForm.addEventListener('submit', async (e) => {
@@ -218,6 +218,7 @@ if (contactForm) {
     formStatus.textContent = '> Transmitting data to mail.sh...';
 
     try {
+      // Qui l'URL si compone in automatico: https://formspree.io/f/xkodalnq
       const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
         method: 'POST',
         body: formData,
