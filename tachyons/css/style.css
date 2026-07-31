@@ -33,6 +33,25 @@ html {
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
+@font-face {
+  font-family: 'Talina';
+  src: url('../fonts/Talina\ DEMO.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-mono: 'Fira Code', monospace;
+  --font-brand: 'Talina', sans-serif;
+}
+
+/* Assegna Talina solo al logo tachyons e ai titoli */
+.nav__brand, .footer__brand, h1, h2 {
+  font-family: var(--font-brand) !important;
+  text-transform: lowercase; /* Mantiene lo stile minimal */
+}
+
 body {
   margin: 0;
   font-family: var(--font-mono);
@@ -426,6 +445,7 @@ img { max-width: 100%; display: block; }
 .form-status.error {
   color: #e74c3c;
 }
+
 /* ===========================================================
    FOOTER
 =========================================================== */
@@ -488,4 +508,69 @@ img { max-width: 100%; display: block; }
     border-bottom: 1px solid var(--line);
     gap: 1.25rem;
   }
+}
+
+/* ===========================================================
+   NAVBAR (Apple-style minimal & compact)
+=========================================================== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 44px; /* Come la navbar di Apple */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  z-index: 1000;
+  
+  /* Sfondo semi-trasparente sfocato */
+  background: rgba(250, 250, 250, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  
+  /* Bordo inferiore ultra sottile */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Brand/Logo a sinistra */
+.nav__brand {
+  font-family: var(--font-brand), sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--amber);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Menu di navigazione a destra */
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__link {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #555555;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  letter-spacing: -0.2px;
+}
+
+.nav__link span {
+  color: #aaa; /* Il prefisso "cd" più chiaro, stile Apple/Terminal */
+  font-size: 0.75rem;
+  margin-right: 0.2rem;
+}
+
+.nav__link:hover {
+  color: #000000;
 }

@@ -11,6 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -23,21 +26,17 @@
     <p class="boot__prompt" id="boot-prompt" hidden>Press any key to continue<span class="cursor">_</span></p>
   </div>
 
-  <header class="nav">
-    <a href="#top" class="nav__brand">
-      <img src="img/logo.ico" alt="" class="nav__mark" width="20" height="20">
+  <nav class="nav">
+    <a href="#" class="nav__brand">
+      <img src="img/logo.ico" alt="" width="18" height="18" style="display:inline-block;">
       <span>~/tachyons</span>
     </a>
-
-    <nav class="nav__links" id="nav-links">
-      <a href="#about">about</a>
-      <a href="#contact">contact</a>
-    </nav>
-
-    <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
-      <span></span><span></span><span></span>
-    </button>
-  </header>
+  
+    <ul class="nav__links">
+      <li><a href="#about" class="nav__link"><span>cd</span>about</a></li>
+      <li><a href="#contact" class="nav__link"><span>cd</span>contact</a></li>
+    </ul>
+  </nav>
 
   <main id="top">
 
@@ -88,8 +87,8 @@
         <span class="terminal-pane__title">mail.sh</span>
       </div>
       <div class="terminal-pane__body">
-        <p class="prompt-line">$ ./mail.sh --send-direct</p>
-        <p style="margin-bottom: 1.5rem;">Send a direct message to my inbox</p>
+        <p class="prompt-line">$ ./mail.sh --larp-direct</p>
+        <p style="margin-bottom: 1.5rem;">C'mon, don't be shy and send that message</p>
 
         <form id="contact-form" class="contact-form">
           <!-- Campo Honeypot per bloccare lo spam dei bot (invisibile agli utenti umani) -->
@@ -102,7 +101,7 @@
 
           <div class="form-group">
             <label for="subject" class="form-label">&gt; subject:</label>
-            <input type="text" id="subject" name="subject" class="form-input" placeholder="Project inquiry / Quick hello" required>
+            <input type="text" id="subject" name="subject" class="form-input" placeholder="Impress me" required>
           </div>
 
           <div class="form-group">
@@ -111,7 +110,7 @@
           </div>
 
           <button type="submit" id="form-submit-btn" class="btn btn--primary btn--large" style="width: 100%; cursor: pointer;">
-            <span class="btn__glyph" aria-hidden="true">$</span> Send Message
+            <span class="btn__glyph" aria-hidden="true"></span> Send Message
           </button>
 
           <!-- Status output del terminale -->
