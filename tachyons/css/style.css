@@ -7,3 +7,69 @@
 /* Preserve the original white-on-black Tachyons mark without flattening its pixels. */
 .brand img,.site-header.is-fixed .brand img,.interior .brand img,.site-footer .brand img,.site-header.menu-open .brand img{filter:none;border-radius:50%}.duplex-art>img{filter:none;border-radius:50%}
 .hero-shade{background:linear-gradient(180deg,rgba(8,17,22,.28),rgba(8,17,22,.4) 45%,rgba(3,10,15,.68))}
+
+/* Policy pages retain the site's typography and spacious editorial layout. */
+.policy-hero { padding-bottom: 85px; }
+.policy-hero h1 { margin-bottom: 30px; }
+.policy-hero > p.policy-updated { color: var(--muted); font-size: 16px; }
+.policy-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(0, 2fr);
+  gap: 80px;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 90px var(--gutter) 130px;
+  align-items: start;
+}
+.policy-sidebar { position: sticky; top: 120px; }
+.policy-toc { max-width: 320px; }
+.policy-toc > h2 { color: var(--muted); margin-bottom: 25px; }
+.policy-toc ol { list-style: none; margin: 0; padding: 0; }
+.policy-toc li { border-bottom: 1px solid var(--line); }
+.policy-toc li a {
+  display: flex;
+  gap: 14px;
+  padding: 16px 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.policy-section-number { flex: 0 0 23px; color: var(--muted); font-size: 11px; padding-top: 3px; }
+.policy-toc a:hover { color: var(--muted); }
+.policy-home-link { display: inline-block; margin-top: 32px; font-size: 13px; }
+.policy-content { min-width: 0; font-size: 18px; line-height: 1.7; overflow-wrap: anywhere; }
+.policy-content p { margin-bottom: 22px; }
+.policy-content > p:first-child { font-size: 23px; line-height: 1.5; margin-bottom: 30px; }
+.policy-content h2 {
+  font-family: Alliance Display, Arial, sans-serif;
+  font-size: clamp(30px, 3vw, 42px);
+  letter-spacing: -.025em;
+  line-height: 1.15;
+  border-top: 1px solid var(--line);
+  padding-top: 35px;
+  margin: 70px 0 32px;
+  scroll-margin-top: 10px;
+}
+.policy-content h3 { font-size: 25px; line-height: 1.3; margin: 38px 0 20px; }
+.policy-content h4 { font-size: 19px; line-height: 1.4; font-weight: 700; margin: 30px 0 15px; }
+.policy-content ul { padding-left: 24px; margin: 0 0 25px; }
+.policy-content li { padding-left: 5px; margin-bottom: 12px; }
+.policy-content li p { margin-bottom: 12px; }
+.policy-content li ul { margin-top: 12px; }
+.policy-content a { text-decoration: underline; text-underline-offset: 3px; }
+.policy-content a:hover { color: var(--muted); }
+@media (max-width: 900px) {
+  .policy-layout { gap: 40px; grid-template-columns: minmax(190px, 1fr) minmax(0, 2fr); }
+  .policy-content { font-size: 17px; }
+  .policy-content > p:first-child { font-size: 21px; }
+}
+@media (max-width: 700px) {
+  .policy-layout { grid-template-columns: 1fr; gap: 55px; padding-top: 55px; padding-bottom: 80px; }
+  .policy-sidebar { position: static; }
+  .policy-toc { max-width: none; }
+  .policy-toc li a { padding: 13px 0; }
+  .policy-hero { padding-bottom: 55px; }
+  .policy-hero h1 { font-size: clamp(46px, 9vw, 62px); }
+  .policy-content > p:first-child { font-size: 20px; }
+  .policy-content h2 { margin-top: 55px; padding-top: 28px; font-size: 32px; }
+  .policy-content h3 { font-size: 23px; }
+}
