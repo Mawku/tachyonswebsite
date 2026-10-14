@@ -42,7 +42,7 @@ searchToggle.addEventListener('click',()=>{if(menu.open)closeMenu();searchDialog
 searchDialog.querySelector('.dialog-close').addEventListener('click',closeSearch);
 searchDialog.addEventListener('cancel',e=>{e.preventDefault();closeSearch();});searchInput.addEventListener('input',renderSearch);
 const features=[
- {title:'Meet our next\nRoboCup robot.',kicker:'Robotics / RoboCup',detail:'Follow the build. One update at a time.',image:'media/robot-overview.svg',alt:'Illustrative placeholder for the RoboCup robot project',url:'robocup.html',position:'center'},
+ {title:'Meet our next\nRoboCup robot.',kicker:'Robotics / RoboCup',detail:'Follow the build. One update at a time.',image:'media/ROBOT1.png',alt:'3D CAD view of the RCT-27 RoboCup robot',url:'robocup.html',position:'center'},
  {title:'Faster than light.\nJust getting started.',kicker:'Our origin / 2026',detail:'The idea behind the name.',image:'media/origin.svg',alt:'Abstract trajectories inspired by particles in motion',url:'story.html',position:'center'},
  {title:'Independent minds.\nShared ambition.',kicker:'People / The squad',detail:'Meet the people behind Tachyons.',image:'media/squad.svg',alt:'An abstract composition of connected circles',url:'members.html',position:'center'},
  {title:'No promises.\nJust possibilities.',kicker:'The next chapter',detail:'There is still space for the next inventor.',image:'media/hero-poster.png',alt:'Technology and precision engineering',url:'index.html#contact',position:'80% center'}
@@ -51,9 +51,42 @@ let featureIndex=0;
 function showFeature(index,focus=false){featureIndex=(index+features.length)%features.length;const f=features[featureIndex];const panel=document.getElementById('feature-panel');panel.href=f.url;panel.setAttribute('aria-labelledby',`feature-tab-${featureIndex}`);const image=document.getElementById('feature-image');image.src=f.image;image.alt=f.alt;image.style.objectPosition=f.position;document.getElementById('feature-title').innerText=f.title;document.getElementById('feature-kicker').textContent=f.kicker;document.getElementById('feature-detail').textContent=f.detail;document.getElementById('feature-count').textContent=`0${featureIndex+1} / 04`;document.querySelectorAll('[data-feature]').forEach((tab,i)=>{tab.setAttribute('aria-selected',String(i===featureIndex));tab.tabIndex=i===featureIndex?0:-1;if(focus&&i===featureIndex)tab.focus();});}
 document.querySelectorAll('[data-feature]').forEach(tab=>{tab.addEventListener('click',()=>showFeature(Number(tab.dataset.feature)));tab.addEventListener('keydown',e=>{let next;if(e.key==='ArrowRight')next=featureIndex+1;else if(e.key==='ArrowLeft')next=featureIndex-1;else if(e.key==='Home')next=0;else if(e.key==='End')next=features.length-1;else return;e.preventDefault();showFeature(next,true);});});
 document.getElementById('feature-prev')?.addEventListener('click',()=>showFeature(featureIndex-1));document.getElementById('feature-next')?.addEventListener('click',()=>showFeature(featureIndex+1));
-const video=document.getElementById('hero-video');const motionToggle=document.getElementById('motion-toggle');let videoPausedByUser=false;
-function syncVideoButton(){if(!video)return;motionToggle.textContent=video.paused?'▶':'Ⅱ';motionToggle.setAttribute('aria-label',video.paused?'Play background video':'Pause background video');}
-if(video){const start=()=>{if(!reducedMotion.matches&&!videoPausedByUser)video.play().catch(syncVideoButton);else video.pause();};video.addEventListener('play',syncVideoButton);video.addEventListener('pause',syncVideoButton);motionToggle.addEventListener('click',()=>{if(video.paused){videoPausedByUser=false;video.play().catch(syncVideoButton);}else{videoPausedByUser=true;video.pause();}});reducedMotion.addEventListener('change',start);document.addEventListener('visibilitychange',()=>document.hidden?video.pause():start());start();}
+const video = document.getElementById('hero-video');
+const motionToggle = document.getElementById('motion-toggle');
+if (video && motionToggle) {
+ let pausedByUser = false;
+ let startedByUser = false;
+ video.muted = true;
+ video.defaultMuted = true;
+ video.autoplay = !reducedMotion.matches;
+ const syncButton = () => {
+  motionToggle.textContent = video.paused ? '▶' : 'Ⅱ';
+  motionToggle.setAttribute('aria-label', video.paused ? 'Play background video' : 'Pause background video');
+ };
+ const play = () => video.play().catch(syncButton);
+ const start = () => {
+  if (document.hidden || pausedByUser || (reducedMotion.matches && !startedByUser)) video.pause();
+  else play();
+  syncButton();
+ };
+ video.addEventListener('play', syncButton);
+ video.addEventListener('pause', syncButton);
+ video.addEventListener('loadeddata', start);
+ video.addEventListener('canplay', start);
+ motionToggle.addEventListener('click', () => {
+  if (video.paused) {
+   pausedByUser = false;
+   startedByUser = true;
+   play();
+  } else {
+   pausedByUser = true;
+   video.pause();
+  }
+ });
+ reducedMotion.addEventListener('change', start);
+ document.addEventListener('visibilitychange', start);
+ start();
+}
 if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');observer.unobserve(e.target);}}),{threshold:.25});document.querySelectorAll('.reveal').forEach(e=>observer.observe(e));}
 document.querySelectorAll('.discord-copy').forEach(button=>button.addEventListener('click',async()=>{const status=button.parentElement.querySelector('.copy-status');try{await navigator.clipboard.writeText('spaghettiallassassina');status.textContent='Discord username copied: spaghettiallassassina';}catch{status.textContent='Discord: spaghettiallassassina';}}));
 document.getElementById('year').textContent=new Date().getFullYear();

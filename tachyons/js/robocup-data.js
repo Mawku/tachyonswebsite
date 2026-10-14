@@ -7,25 +7,18 @@ window.TACHYONS_ROBOT_PROJECT = {
   description: 'The next chapter of Tachyons robotics. A place for images, engineering notes and progress, as the project takes shape.',
   gallery: [
     {
-      image: 'media/robot-overview.svg',
-      alt: 'Illustrative placeholder for the robot overview photograph',
-      title: 'Overview',
-      caption: "A place for the robot's main photograph.",
-      placeholder: true
+      image: 'media/ROBOT1.png',
+      alt: 'First 3D CAD view of the RCT-27 robot with a red frame and orange wheels',
+      title: 'RCT-27 / View 01',
+      caption: '3D CAD view of the RoboCup robot platform.',
+      placeholder: false
     },
     {
-      image: 'media/robot-details.svg',
-      alt: 'Illustrative placeholder for mechanical and electronic detail photographs',
-      title: 'Inside the build',
-      caption: 'Mechanical and electronic details, seen up close.',
-      placeholder: true
-    },
-    {
-      image: 'media/robot-testing.svg',
-      alt: 'Illustrative placeholder for workbench and playing-field photographs',
-      title: 'On the field',
-      caption: 'A place for images from the workbench and the playing field.',
-      placeholder: true
+      image: 'media/ROBOT2.png',
+      alt: 'Second 3D CAD view of the RCT-27 robot showing its frame, wheels and camera',
+      title: 'RCT-27 / View 02',
+      caption: 'Another view of the RoboCup robot platform.',
+      placeholder: false
     }
   ],
   updates: [
