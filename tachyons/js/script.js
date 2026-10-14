@@ -24,9 +24,10 @@ function updateHeader(){header.classList.toggle('is-fixed',scrollY>80);}
 addEventListener('scroll',updateHeader,{passive:true});updateHeader();
 document.getElementById('dismiss-announcement').addEventListener('click',()=>{document.getElementById('announcement').hidden=true;document.documentElement.style.setProperty('--announcement','0px');});
 const pages=[
+ {title:'RoboCup Robot',description:'The new Tachyons robot: image gallery and dated project updates.',url:'robocup.html',keywords:'robot robocup robotics project gallery photos news updates build engineering'},
  {title:'Privacy Policy',description:'How Tachyons collects, uses and protects your personal information.',url:'privacy-policy.html',keywords:'privacy policy policies data cookies rights personal information'},
  {title:'Our Story',description:'The origin of Tachyons. From a name in physics to a robotics squad.',url:'story.html',keywords:'origin physics tachyon faster light history'},
- {title:'Robotics & RoboCup',description:'Where it started: the squad and the World Cup in Incheon.',url:'story.html#robotics',keywords:'robots robot engineering competition korea'},
+ {title:'Our RoboCup Story',description:'Where it started: the squad and the World Cup in Incheon.',url:'story.html#robotics',keywords:'robots robot engineering competition korea history'},
  {title:'Meet the Squad',description:'Angelo Caruso, Daniele del Popolo, Claude, and the people behind Tachyons.',url:'members.html',keywords:'team people founder ceo angelo daniele del popolo developer claude'},
  {title:'Ideas & Innovation',description:'No promises. No surprises. Just ideas.',url:'index.html#about',keywords:'ai technology ideas about'},
  {title:'Get in Touch',description:'Send a message or find us on Discord.',url:'index.html#contact',keywords:'contact email discord message'}
@@ -41,7 +42,7 @@ searchToggle.addEventListener('click',()=>{if(menu.open)closeMenu();searchDialog
 searchDialog.querySelector('.dialog-close').addEventListener('click',closeSearch);
 searchDialog.addEventListener('cancel',e=>{e.preventDefault();closeSearch();});searchInput.addEventListener('input',renderSearch);
 const features=[
- {title:'A squad. A world stage.\nA new beginning.',kicker:'Robotics / RoboCup',detail:'From Incheon to the next chapter.',image:'media/hero-poster.png',alt:'A close-up of precision engineering',url:'story.html#robotics',position:'center'},
+ {title:'Meet our next\nRoboCup robot.',kicker:'Robotics / RoboCup',detail:'Follow the build. One update at a time.',image:'media/robot-overview.svg',alt:'Illustrative placeholder for the RoboCup robot project',url:'robocup.html',position:'center'},
  {title:'Faster than light.\nJust getting started.',kicker:'Our origin / 2026',detail:'The idea behind the name.',image:'media/origin.svg',alt:'Abstract trajectories inspired by particles in motion',url:'story.html',position:'center'},
  {title:'Independent minds.\nShared ambition.',kicker:'People / The squad',detail:'Meet the people behind Tachyons.',image:'media/squad.svg',alt:'An abstract composition of connected circles',url:'members.html',position:'center'},
  {title:'No promises.\nJust possibilities.',kicker:'The next chapter',detail:'There is still space for the next inventor.',image:'media/hero-poster.png',alt:'Technology and precision engineering',url:'index.html#contact',position:'80% center'}
