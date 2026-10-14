@@ -9,6 +9,8 @@
 .hero-shade{background:linear-gradient(180deg,rgba(8,17,22,.28),rgba(8,17,22,.4) 45%,rgba(3,10,15,.68))}
 
 /* Policy pages retain the site's typography and spacious editorial layout. */
+.form-privacy-note { margin: 0 0 22px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+.form-privacy-note a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 .policy-hero { padding-bottom: 85px; }
 .policy-hero h1 { margin-bottom: 30px; }
 .policy-hero > p.policy-updated { color: var(--muted); font-size: 16px; }
@@ -22,7 +24,7 @@
   align-items: start;
 }
 .policy-sidebar { position: sticky; top: 120px; }
-.policy-toc { max-width: 320px; }
+.policy-toc { max-width: 320px; max-height: calc(100dvh - 150px); overflow-y: auto; scrollbar-width: thin; }
 .policy-toc > h2 { color: var(--muted); margin-bottom: 25px; }
 .policy-toc ol { list-style: none; margin: 0; padding: 0; }
 .policy-toc li { border-bottom: 1px solid var(--line); }
@@ -65,7 +67,7 @@
 @media (max-width: 700px) {
   .policy-layout { grid-template-columns: 1fr; gap: 55px; padding-top: 55px; padding-bottom: 80px; }
   .policy-sidebar { position: static; }
-  .policy-toc { max-width: none; }
+  .policy-toc { max-width: none; max-height: none; overflow-y: visible; }
   .policy-toc li a { padding: 13px 0; }
   .policy-hero { padding-bottom: 55px; }
   .policy-hero h1 { font-size: clamp(46px, 9vw, 62px); }
