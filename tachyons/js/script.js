@@ -27,7 +27,7 @@ const pages=[
  {title:'Privacy Policy',description:'How Tachyons collects, uses and protects your personal information.',url:'privacy-policy.html',keywords:'privacy policy policies data cookies rights personal information'},
  {title:'Our Story',description:'The origin of Tachyons. From a name in physics to a robotics squad.',url:'story.html',keywords:'origin physics tachyon faster light history'},
  {title:'Robotics & RoboCup',description:'Where it started: the squad and the World Cup in Incheon.',url:'story.html#robotics',keywords:'robots robot engineering competition korea'},
- {title:'Meet the Squad',description:'Angelo Caruso, Claude, and the people behind Tachyons.',url:'members.html',keywords:'team people founder ceo angelo claude'},
+ {title:'Meet the Squad',description:'Angelo Caruso, Daniele del Popolo, Claude, and the people behind Tachyons.',url:'members.html',keywords:'team people founder ceo angelo daniele del popolo developer claude'},
  {title:'Ideas & Innovation',description:'No promises. No surprises. Just ideas.',url:'index.html#about',keywords:'ai technology ideas about'},
  {title:'Get in Touch',description:'Send a message or find us on Discord.',url:'index.html#contact',keywords:'contact email discord message'}
 ];
