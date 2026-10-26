@@ -23,6 +23,7 @@ function updateHeader(){header.classList.toggle('is-fixed',scrollY>80);}
 addEventListener('scroll',updateHeader,{passive:true});updateHeader();
 document.getElementById('dismiss-announcement').addEventListener('click',()=>{document.getElementById('announcement').hidden=true;document.documentElement.style.setProperty('--announcement','0px');});
 const pages=[
+ {title:'Work with us',description:'Explore roles in electrical engineering, social media, embedded software and CAD.',url:'work-with-us.html',keywords:'work join collaborate collaboration opportunities careers jobs positions junior electrical engineer social media specialist embedded software python cad rapid prototyping fusion kicad robotics design lavora con noi collaborazioni candidature'},
  {title:'RoboCup Robot',description:'The new Tachyons robot: image gallery and dated project updates.',url:'robocup.html',keywords:'robot robocup robotics project gallery photos news updates build engineering'},
  {title:'Privacy Policy',description:'How Tachyons collects, uses and protects your personal information.',url:'privacy-policy.html',keywords:'privacy policy policies data cookies rights personal information'},
  {title:'Our Story',description:'The origin of Tachyons. From a name in physics to a robotics squad.',url:'story.html',keywords:'origin physics tachyon faster light history'},
@@ -47,7 +48,18 @@ const features=[
  {title:'No promises.\nJust possibilities.',kicker:'The next chapter',detail:'There is still space for the next inventor.',image:'media/hero-poster.png',alt:'Technology and precision engineering',url:'index.html#contact',position:'80% center'}
 ];
 let featureIndex=0;
-function showFeature(index,focus=false){featureIndex=(index+features.length)%features.length;const f=features[featureIndex];const panel=document.getElementById('feature-panel');panel.href=f.url;panel.setAttribute('aria-labelledby',`feature-tab-${featureIndex}`);const image=document.getElementById('feature-image');image.src=f.image;image.alt=f.alt;image.style.objectPosition=f.position;document.getElementById('feature-title').innerText=f.title;document.getElementById('feature-kicker').textContent=f.kicker;document.getElementById('feature-detail').textContent=f.detail;document.getElementById('feature-count').textContent=`0${featureIndex+1} / 04`;document.querySelectorAll('[data-feature]').forEach((tab,i)=>{tab.setAttribute('aria-selected',String(i===featureIndex));tab.tabIndex=i===featureIndex?0:-1;if(focus&&i===featureIndex)tab.focus();});}
+function showFeature(index, focus = false) {
+ const update = () => {featureIndex=(index+features.length)%features.length;const f=features[featureIndex];const panel=document.getElementById('feature-panel');panel.href=f.url;panel.setAttribute('aria-labelledby',`feature-tab-${featureIndex}`);const image=document.getElementById('feature-image');image.src=f.image;image.alt=f.alt;image.style.objectPosition=f.position;document.getElementById('feature-title').innerText=f.title;document.getElementById('feature-kicker').textContent=f.kicker;document.getElementById('feature-detail').textContent=f.detail;document.getElementById('feature-count').textContent=`0${featureIndex+1} / 04`;document.querySelectorAll('[data-feature]').forEach((tab,i)=>{tab.setAttribute('aria-selected',String(i===featureIndex));tab.tabIndex=i===featureIndex?0:-1;if(focus&&i===featureIndex)tab.focus();});};
+ if (window.TachyonsMotion) window.TachyonsMotion.swapMedia({
+  stage: document.getElementById('feature-panel'),
+  image: document.getElementById('feature-image'),
+  headings: [document.getElementById('feature-title')],
+  labels: [document.getElementById('feature-kicker')],
+  body: [document.getElementById('feature-detail')],
+  counter: document.getElementById('feature-count')
+ }, update);
+ else update();
+}
 document.querySelectorAll('[data-feature]').forEach(tab=>{tab.addEventListener('click',()=>showFeature(Number(tab.dataset.feature)));tab.addEventListener('keydown',e=>{let next;if(e.key==='ArrowRight')next=featureIndex+1;else if(e.key==='ArrowLeft')next=featureIndex-1;else if(e.key==='Home')next=0;else if(e.key==='End')next=features.length-1;else return;e.preventDefault();showFeature(next,true);});});
 document.getElementById('feature-prev')?.addEventListener('click',()=>showFeature(featureIndex-1));document.getElementById('feature-next')?.addEventListener('click',()=>showFeature(featureIndex+1));
 const video = document.getElementById('hero-video');
@@ -83,7 +95,7 @@ if (video && motionToggle) {
  document.addEventListener('visibilitychange', start);
  start();
 }
-if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');observer.unobserve(e.target);}}),{threshold:.25});document.querySelectorAll('.reveal').forEach(e=>observer.observe(e));}
+
 document.querySelectorAll('.discord-copy').forEach(button=>button.addEventListener('click',async()=>{const status=button.parentElement.querySelector('.copy-status');try{await navigator.clipboard.writeText('spaghettiallassassina');status.textContent='Discord username copied: spaghettiallassassina';}catch{status.textContent='Discord: spaghettiallassassina';}}));
 document.getElementById('year').textContent=new Date().getFullYear();
 const form=document.getElementById('contact-form');

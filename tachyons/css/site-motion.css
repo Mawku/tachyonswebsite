@@ -1,0 +1,34 @@
+/* Shared Tachyons motion: fixed layout, masked lines, rolling counters and media wipes. */
+.site-motion-visual, .site-line-mask, .site-motion-line { display: block; }
+.site-line-mask { overflow: hidden; overflow: clip; padding-bottom: .1em; margin-bottom: -.1em; }
+.site-motion-line { transform-origin: left bottom; }
+.site-split-text { min-width: 0; }
+.site-scramble-label { position: relative; }
+.site-scramble-label > .site-motion-visual { position: absolute; inset: 0; }
+.site-scramble-size { visibility: hidden; }
+.site-motion-on .hero h1 span, .site-motion-on .hero-copy > p { animation: none !important; }
+.site-motion-on .hero h1 .sr-only { position: absolute; }
+.site-motion-on .hero h1 .site-motion-visual { padding-bottom: .08em; }
+.site-motion-on .statement { background: linear-gradient(to right, #242a2d var(--statement-fill, 0%), #a4a8ab var(--statement-fill, 0%)); background-clip: text; -webkit-background-clip: text; color: #a4a8ab; -webkit-text-fill-color: transparent; }
+.site-media-stage { position: relative; }
+.site-media-stage > .site-media-ghost { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; z-index: 0; }
+.site-media-stage > .site-media-current { position: relative; z-index: 0; }
+.site-media-stage .feature-label, .site-media-stage .feature-caption { z-index: 2; }
+.site-media-stage .robot-gallery-arrow { z-index: 2; }
+.site-roll-counter > .site-motion-visual { overflow: hidden; position: relative; font-variant-numeric: tabular-nums; }
+.site-counter-in { display: block; }
+.site-counter-out { display: block; position: absolute; inset: 0; }
+.site-motion-on .direction-row { transition: padding .45s, background .45s !important; }
+.site-motion-on .direction-row h3, .site-motion-on .row-symbol { transition: transform .55s cubic-bezier(.22,1,.36,1) !important; }
+.site-motion-on .direction-row:hover .row-symbol { transform: rotate(35deg); }
+.site-motion-on .footer-cta { transition: background .3s, color .3s !important; }
+.site-motion-on .footer-cta > span { transition: transform .5s cubic-bezier(.22,1,.36,1) !important; }
+.site-motion-on .footer-cta:hover > span { transform: translateX(10px); }
+.site-motion-on .menu-toggle span, .site-motion-on .icon-button { transition: transform .25s, opacity .25s !important; }
+.site-motion-on .feature-panel > img { transition: transform .7s cubic-bezier(.22,1,.36,1) !important; }
+.site-motion-on .robot-gallery-thumbnail img { transition: opacity .3s, border-color .3s !important; }
+.site-motion-on .outline-button, .site-motion-on .submit-button, .site-motion-on .header-cta { transition: background .25s, color .25s !important; }
+.site-motion-line { overflow-wrap: anywhere; }
+@media (max-width: 360px) {
+  .site-motion-on .interior-hero h1 { font-size: 44px; }
+}

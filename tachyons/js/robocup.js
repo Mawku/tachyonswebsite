@@ -22,6 +22,7 @@
 
   function showPhoto(position) {
     if (!photos.length) return;
+    const update = () => {
     index = (position + photos.length) % photos.length;
     const photo = photos[index];
     image.src = photo.image;
@@ -33,6 +34,9 @@
     thumbnailButtons.forEach((button, i) => {
       button.setAttribute('aria-current', String(i === index));
     });
+    };
+    if (window.TachyonsMotion) window.TachyonsMotion.swapMedia({ stage, image, headings: [title], body: [caption], counter }, update);
+    else update();
   }
 
   photos.forEach((photo, i) => {
