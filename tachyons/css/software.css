@@ -1,0 +1,82 @@
+/* Camera software download page. */
+.software-main { background: #fff; }
+.software-main h1, .software-main h2 { font-family: Alliance Display, Arial, sans-serif; letter-spacing: -.045em; line-height: 1.04; }
+.software-hero { background: #1e2124; color: white; padding: 65px var(--gutter) 75px; }
+.software-meta, .software-product-meta { display: flex; justify-content: space-between; gap: 20px; }
+.software-meta { color: #c0c5c7; }
+.software-hero h1 { font-size: clamp(70px, 10.5vw, 155px); margin: 80px 0 65px; }
+.software-hero-bottom { display: flex; align-items: end; justify-content: space-between; gap: 30px; }
+.software-hero-bottom p { font-size: clamp(20px, 2vw, 29px); line-height: 1.25; max-width: 550px; }
+.software-outline { border: 1px solid #ffffffa0; padding: 13px 16px; display: inline-flex; gap: 50px; justify-content: space-between; font-size: 14px; transition: background .25s, color .25s !important; }
+.software-outline:hover { background: white; color: #1e2124; }
+.software-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: end; padding: 100px var(--gutter) 85px; }
+.software-intro .eyebrow { color: #777a7e; margin-bottom: 28px; }
+.software-intro h2 { font-size: clamp(42px, 4.5vw, 68px); }
+.software-intro > p { font-size: 20px; line-height: 1.5; color: #62676b; max-width: 620px; }
+.software-product { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); gap: 50px; align-items: center; padding: 70px var(--gutter); border-top: 1px solid #d6d7d8; }
+.software-product:nth-of-type(even) { background: #f1f2f1; }
+.software-product-copy { max-width: 650px; }
+.software-product-meta { color: #777a7e; margin-bottom: 35px; }
+.software-product h2 { font-size: clamp(50px, 5.6vw, 85px); margin-bottom: 22px; }
+.software-product-copy > p:not(.software-footnote):not(.software-download-status) { color: #666b6d; font-size: 18px; line-height: 1.55; max-width: 570px; margin-top: 15px; }
+.software-product-copy > p.software-lead { color: #1e2124 !important; font-size: clamp(22px, 2.1vw, 30px) !important; line-height: 1.18 !important; letter-spacing: -.02em; }
+.software-specs { margin: 36px 0 32px; border-top: 1px solid #d0d2d1; }
+.software-specs > div { display: grid; grid-template-columns: 130px minmax(0,1fr); gap: 20px; padding: 12px 0; border-bottom: 1px solid #d0d2d1; font-size: 14px; }
+.software-specs dt { color: #777a7e; }
+.software-specs dd { margin: 0; }
+.software-download { width: 100%; border: 1px solid #1e2124; background: #1e2124; color: white; display: flex; align-items: center; justify-content: space-between; gap: 25px; padding: 17px 20px; font-size: 17px; text-align: left; transition: background .25s, color .25s !important; }
+.software-download:hover { background: transparent; color: #1e2124; }
+.software-download span { font-size: 23px; line-height: 1; transition: transform .35s !important; }
+.software-download:hover span { transform: translate(3px, 3px); }
+.software-download-status { min-height: 0; margin: 0; font-size: 13px; color: #636968; }
+.software-download-status:not(:empty) { margin-top: 12px; }
+.software-download-status.is-error { color: #a12e2e; }
+.software-product-copy .software-footnote { margin-top: 18px; color: #777a7e; font-size: 13px; line-height: 1.55; }
+.software-product-image { margin: 0; min-width: 0; background: #e1e4e3; padding: clamp(20px, 3vw, 48px); }
+.software-product-image img { display: block; width: 100%; max-height: 570px; object-fit: contain; box-shadow: 0 12px 32px #17202b25; }
+.software-product-image figcaption { display: flex; justify-content: space-between; gap: 15px; margin-top: 25px; font-size: 11px; color: #666b6d; text-transform: uppercase; letter-spacing: .03em; }
+.software-product-image.shutter-image img { width: auto; max-width: 100%; margin: auto; }
+.software-product-image.live-image { background: #c8cfcd; }
+.software-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; background: #1e2124; color: white; padding: 110px var(--gutter) 125px; }
+.software-notes .eyebrow { color: #aeb6b8; }
+.software-notes h2 { font-size: clamp(56px, 6vw, 90px); margin: 40px 0 0; }
+.software-notes > div:last-child { align-self: end; }
+.software-notes > div:last-child p { max-width: 640px; color: #c1c6c8; font-size: 19px; line-height: 1.6; margin-bottom: 25px; }
+.software-notes .text-button { color: white; margin-top: 20px; }
+@media (min-width: 1700px) { .software-hero, .software-intro, .software-product, .software-notes { padding-left: max(30px, calc((100vw - 1640px) / 2)); padding-right: max(30px, calc((100vw - 1640px) / 2)); } }
+@media (max-width: 900px) {
+ .software-hero { padding-top: 55px; }
+ .software-hero h1 { margin: 60px 0 50px; }
+ .software-intro { grid-template-columns: 1fr; gap: 25px; padding-top: 75px; padding-bottom: 65px; }
+ .software-product { grid-template-columns: 1fr; gap: 45px; padding-top: 65px; padding-bottom: 65px; }
+ .software-product-copy { max-width: none; }
+ .software-product-image { max-width: 800px; }
+ .software-notes { gap: 45px; padding-top: 80px; padding-bottom: 90px; }
+}
+@media (max-width: 600px) {
+ .software-hero { padding-top: 45px; padding-bottom: 45px; }
+ .software-meta .eyebrow { font-size: 9px; }
+ .software-hero h1 { font-size: clamp(58px, 14.5vw, 85px); margin: 55px 0 45px; }
+ .software-hero-bottom { align-items: start; flex-direction: column; gap: 28px; }
+ .software-hero-bottom p { font-size: 22px; }
+ .software-intro { padding-top: 65px; padding-bottom: 55px; }
+ .software-intro h2 { font-size: 43px; }
+ .software-intro > p { font-size: 17px; }
+ .software-product { padding-top: 50px; padding-bottom: 55px; gap: 35px; }
+ .software-product-meta { margin-bottom: 28px; }
+ .software-product-meta .eyebrow { font-size: 9px; }
+ .software-product h2 { font-size: clamp(47px, 12vw, 65px); }
+ .software-product-copy > p:not(.software-footnote):not(.software-download-status) { font-size: 16px; }
+ .software-product-copy > p.software-lead { font-size: 23px !important; }
+ .software-specs > div { grid-template-columns: 95px minmax(0,1fr); gap: 12px; font-size: 13px; }
+ .software-download { font-size: 15px; padding: 16px; }
+ .software-product-image { padding: 20px; }
+ .software-notes { grid-template-columns: 1fr; gap: 40px; padding-top: 65px; padding-bottom: 75px; }
+ .software-notes h2 { font-size: 60px; margin-top: 25px; }
+ .software-notes > div:last-child p { font-size: 16px; }
+}
+@media (max-width: 360px) {
+ .software-page .site-header { padding-left: 10px; padding-right: 10px; }
+ .software-page .site-header .brand { font-size: 20px; flex-shrink: 0; }
+ .software-page .header-cta { white-space: nowrap; padding: 0 8px; margin-right: 5px; }
+}

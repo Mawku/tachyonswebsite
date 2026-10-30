@@ -252,8 +252,8 @@
         if (element.closest('.feature-label') || element.hasAttribute('hidden')) return;
         register(element, 'label');
       });
-      main.querySelectorAll('.interior-hero > p:not(.eyebrow), .story-section p, .story-pull p, .direction-row p, .duplex-copy p, .manifesto article > p, .contact-section > div > p:not(.eyebrow):not(.copy-status), .member-info > p:not(.eyebrow), .member-info blockquote, .robot-intro-bottom > p, .robot-updates-heading > p:not(.eyebrow), .robot-news-content > p:not(.eyebrow)').forEach(element => register(element, 'lines'));
-      main.querySelectorAll('.member-art img, .duplex-art, .robot-news-image').forEach(element => register(element, 'image'));
+      main.querySelectorAll('.interior-hero > p:not(.eyebrow), .story-section p, .story-pull p, .direction-row p, .duplex-copy p, .manifesto article > p, .contact-section > div > p:not(.eyebrow):not(.copy-status), .member-info > p:not(.eyebrow), .member-info blockquote, .robot-intro-bottom > p, .robot-updates-heading > p:not(.eyebrow), .robot-news-content > p:not(.eyebrow), .software-hero-bottom > p, .software-intro > p, .software-product-copy > p:not(.software-footnote):not(.software-download-status), .software-notes > div:last-child p').forEach(element => register(element, 'lines'));
+      main.querySelectorAll('.member-art img, .duplex-art, .robot-news-image, .software-product-image img').forEach(element => register(element, 'image'));
       main.querySelectorAll('.member-art small, .robot-news-entry time, .policy-sidebar, .policy-content > p, .policy-content > ul, .policy-content > ol, .form-privacy-note, #contact-form, .feature-panel, #robot-gallery-stage').forEach(element => register(element, 'block'));
       document.querySelectorAll('.hero h1 > span').forEach(element => register(element, 'lines'));
       register(document.querySelector('.hero-copy > p'), 'block');

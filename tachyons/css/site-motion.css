@@ -32,3 +32,15 @@
 @media (max-width: 360px) {
   .site-motion-on .interior-hero h1 { font-size: 44px; }
 }
+
+/* Keep the first two feature tabs visible on compact screens. */
+@media (max-width: 600px) {
+ .feature-nav { gap: 10px; }
+ .feature-tabs { gap: 4px; }
+ .feature-tabs button { font-size: 14px; padding: 5px 8px; }
+}
+@media (max-width: 360px) {
+ body:not(.interior) .site-header { padding-left: 10px; padding-right: 10px; }
+ body:not(.interior) .site-header .brand { font-size: 23px; }
+ body:not(.interior) .header-cta { white-space: nowrap; padding: 0 8px; margin-right: 5px; }
+}
