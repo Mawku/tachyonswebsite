@@ -204,3 +204,9 @@
  .work-job-section ul { font-size: 16px; padding-left: 18px; }
  .work-job-section li { padding-left: 2px; }
 }
+/* Preserve the entire supplied wallpaper without cropping. */
+.work-culture-panel .work-wallpaper img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; background: #000; }
+@media (max-width: 600px) {
+ .work-wallpaper .wallpaper-credit { display: block; padding: 12px; background: #000; color: #fff; font-size: 11px; line-height: 1.5; }
+}
+.work-wallpaper .wallpaper-credit { display: block; padding: 12px; background: #000; color: #fff; font-size: 11px; line-height: 1.5; }

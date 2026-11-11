@@ -44,3 +44,26 @@
  body:not(.interior) .site-header .brand { font-size: 23px; }
  body:not(.interior) .header-cta { white-space: nowrap; padding: 0 8px; margin-right: 5px; }
 }
+/* Show the supplied wallpaper in full, with text outside the image. */
+.wallpaper-credit { display: none; }
+.feature-panel.wallpaper-feature { display: flex; flex-direction: column; height: auto; min-height: 0; background: #000; }
+.feature-panel.wallpaper-feature > img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; transform: none !important; }
+.feature-panel.wallpaper-feature::after { display: none; }
+.feature-panel.wallpaper-feature .feature-label { order: -1; position: static; max-width: none; padding: 20px 24px; background: #202426; }
+.feature-panel.wallpaper-feature .feature-label h3 { margin-top: 8px; }
+.feature-panel.wallpaper-feature .feature-caption { position: static; padding: 16px 24px; background: #202426; }
+@media (max-width: 600px) {
+ .feature-panel.wallpaper-feature .wallpaper-credit { display: block; padding: 14px 20px; background: #000; color: #fff; font-size: 11px; line-height: 1.5; }
+}
+.feature-panel.wallpaper-feature .wallpaper-credit { display: block; padding: 14px 20px; background: #000; color: #fff; font-size: 11px; line-height: 1.5; }
+.feature-panel.wallpaper-feature .feature-caption > span:last-child { flex-shrink: 0; white-space: nowrap; }
+@media (max-width: 360px) {
+ .site-header { padding-left: 10px; padding-right: 10px; }
+ .site-header .brand, body:not(.interior) .site-header .brand { font-size: 20px; flex-shrink: 0; }
+ .header-cta, body:not(.interior) .header-cta { white-space: nowrap; padding: 0 8px; margin-right: 5px; }
+}
+/* Keep the full wallpaper and its small copyright text readable in the story panel. */
+.duplex-art.duplex-wallpaper { display: flex; flex-direction: column; justify-content: center; align-items: stretch; background: #000; }
+.duplex-art.duplex-wallpaper > img { display: block; width: 100%; height: auto; max-width: 100%; aspect-ratio: 16 / 9; object-fit: contain; filter: none; border-radius: 0; }
+.duplex-art.duplex-wallpaper .wallpaper-credit { display: block; padding: 12px 20px; background: #000; color: #fff; font-size: 11px; line-height: 1.5; }
+.duplex-art.duplex-wallpaper > .eyebrow { position: relative; inset: auto; padding: 0 20px 20px; color: #c5cccd; }
